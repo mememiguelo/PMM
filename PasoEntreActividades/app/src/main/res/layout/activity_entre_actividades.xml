@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:text="@string/lblId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/identificador"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/identificador" />
+    <TextView
+        android:text="@string/lblNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre" />
+    <TextView
+        android:text="@string/lblApellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/apellido"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/apellido" />
+    <Button
+        android:id="@+id/miBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pulsar" />
+    <TextView
+        android:id="@+id/miLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

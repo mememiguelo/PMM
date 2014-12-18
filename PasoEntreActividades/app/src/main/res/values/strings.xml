@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PasoEntreActividades</string>
+    <string name="app_name2">Datos Persona</string>
+    <string name="lblNombre">Nombre:</string>
+    <string name="lblApellido">Apellido:</string>
+    <string name="lblId">Identificador:</string>
+    <string name="identificador">identificador:</string>
+    <string name="nombre">Escribe el Nombre:</string>
+    <string name="apellido">Escribe el Apellido:</string>
+    <string name="pulsar">HAZ CLICK !!</string>
+    <string name="saludo">para saludar!!</string>
+    <string name="volver">para volver !!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

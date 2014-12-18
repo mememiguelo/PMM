@@ -1,0 +1,132 @@
+import android.os.Parcel;
+import android.os.Parcelable;
+public class Persona implements Parcelable{
+        private int id;
+        private String nombre;
+        private String apellidos;
+
+         public static final Parcelable.Creator<Persona> CREATOR =
+                new Parcelable.Creator<Persona>()
+                {
+                     public Persona createFromParcel(Parcel parcel)
+                     {
+                        Persona per= new Persona();
+                        per.id = parcel.readInt();
+                        per.nombre = parcel.readString();
+                        per.apellidos = parcel.readString();
+                         return(per);
+                    }
+
+                    @Override
+                    public Persona[] newArray(int size)
+                    {
+                        return new Persona[size];
+                    }
+                };
+
+        @Override
+        public void writeToParcel(Parcel parcel, int flags)
+        {   parcel.writeInt(id);
+            parcel.writeString(nombre);
+            parcel.writeString(apellidos);
+        }
+
+        @Override
+        public int describeContents()
+        {
+            return 0;
+        }
+
+        public int getId()
+        {
+            return id;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+
+        public String getNombre()
+        {
+            return nombre;
+        }
+
+        public void setNombre(String nombre)
+        {
+            this.nombre = nombre;
+        }
+
+        public String getApellidos()
+        {
+            return apellidos;
+        }
+
+        public void setApellidos(String apellidos)
+        {
+            this.apellidos = apellidos;
+        }
+         public String toString(){
+             return id + "  " + nombre + "  " + apellidos;
+         }
+
+}
+
+
+public class EntreActividades extends Activity {
+
+    public static int COD_RESPUESTA=0;
+    EditText elId;
+    EditText elNombre;
+    EditText elApellido;
+    Persona p;
+ Persona [] datosPersonas;
+    TextView losDatos;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pantalla2);
+        final EditText elId= (EditText)findViewById(R.id.identificador);
+        final EditText elNombre= (EditText)findViewById(R.id.nombre);
+        final EditText elApellido= (EditText)findViewById(R.id.apellido);
+
+
+        final Button miBoton= (Button)findViewById(R.id.miBtn);
+        losDatos= (TextView)findViewById(R.id.miLbl);
+
+
+        //Borrar el texto inicial del EditText
+        elNombre.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            public void onFocusChange(View v, boolean b){
+                if (b)  elNombre.setText("");
+
+            }
+        });
+
+        p=new Persona();
+        String iden=elId.getText().toString();
+        p.setId((long)Integer.parseInt(iden));
+        p.setNombre(elNombre.getText().toString());
+        p.setApellidos(elApellido.getText().toString());
+        miBoton.setOnClickListener( new View.OnClickListener(){
+            public void onClick(View v){
+                Intent miIntent= new Intent(EntreActividades.this, Pantalla2.class);
+                Bundle miBundle=new Bundle();
+                miBundle.putParcelable("laPersona", p);
+                miIntent.putExtras(miBundle);
+                startActivityForResult(miIntent, COD_RESPUESTA);
+                //elSaludo.setText(mensajePaso);
+            }
+
+        });
+    }
+    public void onActivityResult(int cod_resp, int cod_result,Intent intent){
+        if (cod_result== RESULT_OK) {
+            Bundle otroBundle = intent.getExtras();
+            losDatos.setText(otroBundle.getParcelable("laPersona").toString());
+        }
+    }
+}
+
+
